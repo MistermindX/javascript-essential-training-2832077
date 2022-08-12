@@ -6,10 +6,10 @@
  * Copyright (c) 2015-2018 Sandra Gonzales
  */
 
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react'
+import PropTypes from 'prop-types'
 
-const imgWithClick = { cursor: "pointer" };
+const imgWithClick = { cursor: 'pointer' }
 
 const Photo = ({
   index,
@@ -19,18 +19,18 @@ const Photo = ({
   direction,
   top,
   left,
-  key,
+  key
 }) => {
-  const imgStyle = { margin: margin, display: "block" };
-  if (direction === "column") {
-    imgStyle.position = "absolute";
-    imgStyle.left = left;
-    imgStyle.top = top;
+  const imgStyle = { margin: margin, display: 'block' }
+  if (direction === 'column') {
+    imgStyle.position = 'absolute'
+    imgStyle.left = left
+    imgStyle.top = top
   }
 
   const handleClick = (event) => {
-    onClick(event, { photo, index });
-  };
+    onClick(event, { photo, index })
+  }
 
   return (
     <img
@@ -39,8 +39,8 @@ const Photo = ({
       {...photo}
       onClick={onClick ? handleClick : null}
     />
-  );
-};
+  )
+}
 
 export const photoPropType = PropTypes.shape({
   key: PropTypes.string,
@@ -50,8 +50,8 @@ export const photoPropType = PropTypes.shape({
   alt: PropTypes.string,
   title: PropTypes.string,
   srcSet: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
-  sizes: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
-});
+  sizes: PropTypes.oneOfType([PropTypes.string, PropTypes.array])
+})
 
 Photo.propTypes = {
   index: PropTypes.number.isRequired,
@@ -59,20 +59,20 @@ Photo.propTypes = {
   photo: photoPropType.isRequired,
   margin: PropTypes.number,
   top: (props) => {
-    if (props.direction === "column" && typeof props.top !== "number") {
+    if (props.direction === 'column' && typeof props.top !== 'number') {
       return new Error(
-        "top is a required number when direction is set to `column`"
-      );
+        'top is a required number when direction is set to `column`'
+      )
     }
   },
   left: (props) => {
-    if (props.direction === "column" && typeof props.left !== "number") {
+    if (props.direction === 'column' && typeof props.left !== 'number') {
       return new Error(
-        "left is a required number when direction is set to `column`"
-      );
+        'left is a required number when direction is set to `column`'
+      )
     }
   },
-  direction: PropTypes.string,
-};
+  direction: PropTypes.string
+}
 
-export default Photo;
+export default Photo
